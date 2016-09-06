@@ -25,7 +25,7 @@ RUN apt-get purge -y \
     && apt-get -y --purge autoremove
 
 # Tell linux where to find .so files for the stuff we just built
-RUN echo "/opt/vc/lib" > /etc/ld.so.conf.d/00-vcms.conf
+RUN echo "/opt/vc/lib" > /etc/ld.so.conf.d/00-vcms.conf \
     && ldconfig
 
 # Run without the having to specify the full path
