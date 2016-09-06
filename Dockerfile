@@ -26,7 +26,7 @@ RUN apt-get purge -y \
 
 # Tell linux where to find .so files for the stuff we just built
 RUN echo "/opt/vc/lib" > /etc/ld.so.conf.d/00-vcms.conf
-RUN ldconfig
+    && ldconfig
 
 # Run without the having to specify the full path
 ENV PATH /opt/vc/bin:/opt/vc/lib:$PATH
