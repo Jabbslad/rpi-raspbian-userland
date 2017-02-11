@@ -4,9 +4,7 @@ FROM resin/rpi-raspbian:jessie
 RUN apt-get update && apt-get install -y \
       build-essential \
       cmake \
-      git \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+      git 
 
 # Get latest userland tools and build. Clean up unused stuff at the end
 RUN cd \
