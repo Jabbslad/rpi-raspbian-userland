@@ -1,6 +1,6 @@
 FROM jsurf/rpi-raspbian
 
-RUN ["cross-build-start"]
+RUN [ "cross-build-start" ]
 
 # Install cron / deps to build raspberry pi userland tools from source
 RUN apt-get update && apt-get install -y \
@@ -35,4 +35,4 @@ RUN usermod -a -G video root
 # Run without the having to specify the full path
 ENV PATH /opt/vc/bin:/opt/vc/lib:$PATH
 
-RUN ["cross_build_end"]
+RUN [ "cross-build-end" ]
