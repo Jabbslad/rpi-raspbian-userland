@@ -30,8 +30,6 @@ RUN apt-get purge -y \
 RUN echo "/opt/vc/lib" > /etc/ld.so.conf.d/00-vcms.conf \
     && ldconfig
 
-RUN usermod -a -G video root
-
 # Run without the having to specify the full path
 ENV PATH /opt/vc/bin:/opt/vc/lib:$PATH
 
