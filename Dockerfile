@@ -2,7 +2,7 @@ FROM jsurf/rpi-raspbian
 
 RUN [ "cross-build-start" ]
 
-# Install cron / deps to build raspberry pi userland tools from source
+# Install deps to build raspberry pi userland tools from source
 RUN apt-get update && apt-get install -y \
       build-essential \
       cmake \
@@ -31,6 +31,9 @@ RUN echo "/opt/vc/lib" > /etc/ld.so.conf.d/00-vcms.conf \
     && ldconfig
 
 # Run without the having to specify the full path
-ENV PATH /opt/vc/bin:/opt/vc/lib:$PATH
+ENV PATH $PATH:/opt/vc/bin
+
+#ldconfig doesn't take effect when building under x86/64?
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/vc/lib
 
 RUN [ "cross-build-end" ]
