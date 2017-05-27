@@ -1,6 +1,4 @@
-FROM jsurf/rpi-raspbian
-
-RUN [ "cross-build-start" ]
+FROM resin/rpi-raspbian:jessie-20160831
 
 # Install cron / deps to build raspberry pi userland tools from source
 RUN apt-get update && apt-get install -y \
@@ -33,4 +31,3 @@ RUN echo "/opt/vc/lib" > /etc/ld.so.conf.d/00-vcms.conf \
 # Run without the having to specify the full path
 ENV PATH /opt/vc/bin:/opt/vc/lib:$PATH
 
-RUN [ "cross-build-end" ]
